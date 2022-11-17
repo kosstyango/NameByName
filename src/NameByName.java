@@ -15,6 +15,7 @@ class StepThread extends Thread {
                     System.out.println(currentThread().getName() + " wrote its' name");
                     lock.notify();
                     lock.wait();
+                    //Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -26,6 +27,7 @@ class StepThread extends Thread {
 public class NameByName {
     public static void main(String[] strings) {
         Object lock = new Object();
+        new StepThread(lock).start();
         new StepThread(lock).start();
         new StepThread(lock).start();
         new StepThread(lock).start();
